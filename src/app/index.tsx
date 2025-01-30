@@ -1,42 +1,49 @@
+import React from "react";
 import { Link } from "expo-router";
-import { Entypo } from "@expo/vector-icons";
-import { Text, TouchableOpacity, View } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { Text, TouchableOpacity, Image } from "react-native";
+import Animated, {
+  FadeIn,
+  BounceIn,
+  SlideInDown,
+} from "react-native-reanimated";
 
-export default function Welcome() {
+export default function WelcomeScreen() {
   return (
-    <View className="flex-1 px-10% py-5% gap-4 bg-gray-100">
-      <View className="flex-1 bg-white shadow shadow-black/5 rounded-3xl"></View>
+    <LinearGradient
+      end={{ x: 1, y: 1 }}
+      start={{ x: 0, y: 0 }}
+      colors={["#4f46e5", "#818cf8"]}
+      className="items-center justify-center flex-1"
+    >
+      <Animated.View entering={SlideInDown.duration(1000)}>
+        <Image
+          className="w-48 h-48 mb-8"
+          source={require("../../public/logo.png")}
+        />
+      </Animated.View>
 
-      <View className="items-center justify-center flex-1 w-full gap-10">
-        <Text className="text-3xl font-bold text-center text-slate-800">
-          Stay Organized with TodoNow
-        </Text>
-        <Text className="leading-5 text-center text-gray-600">
-          Keep track of your tasks effortlessly, manage your priorities, and
-          boost productivity with our simple and intuitive to-do list app. Let's
-          make every day more productive!
-        </Text>
+      <Animated.Text
+        entering={FadeIn.duration(1000)}
+        className="mb-4 text-4xl font-bold text-center text-white"
+      >
+        Welcome to Todo App
+      </Animated.Text>
 
-        <Link
-          asChild
-          replace
-          href="/home"
-          className="px-6 py-3 rounded-full shadow "
-        >
-          <TouchableOpacity className="flex-row items-center gap-10 justify-evenly bg-slate-800">
-            <Text
-              style={{ fontVariant: ["small-caps"] }}
-              className="text-lg font-bold text-white"
-            >
-              get started
-            </Text>
+      <Animated.Text
+        entering={FadeIn.delay(500).duration(1000)}
+        className="mb-8 text-lg text-center text-slate-200"
+      >
+        Stay organized and productive with your daily tasks.
+      </Animated.Text>
 
-            <View className="px-4 py-1 bg-white rounded-full">
-              <Entypo name="chevron-right" size={24} color="black" />
-            </View>
+      <Animated.View entering={BounceIn.delay(1000).duration(1000)}>
+        <Link href="/home" asChild>
+          <TouchableOpacity className="px-10 py-3 bg-white rounded-full shadow-lg">
+            <Text className="font-semibold text-indigo-500">Get Started</Text>
           </TouchableOpacity>
         </Link>
-      </View>
-    </View>
+      </Animated.View>
+    </LinearGradient>
   );
 }
