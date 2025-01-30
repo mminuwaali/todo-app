@@ -5,14 +5,9 @@ module.exports = {
   content: ["./src/**/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      borderRadius: {
-        "4xl": "2.0rem",
-        "5xl": "2.5rem",
-        "6xl": "3.0rem",
-        "7xl": "3.5rem",
-        "8xl": "4.0rem",
-        "9xl": "4.5rem",
-        "10xl": "5.0rem",
+      colors: {
+        accent: "#6366f1",
+        glass: "rgba(200, 200, 200, 0.6)",
       },
       spacing: {
         "1%": "1%",
