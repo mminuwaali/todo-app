@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "backgroundColor": "#ffffff",
         "foregroundImage": "./public/logo.png"
-      }
+      },
+      "package": "com.mminuwaali.todoapp"
     },
     "web": {
       "bundler": "metro",
